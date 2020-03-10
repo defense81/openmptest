@@ -10,7 +10,7 @@ void main()
 	double x, pi, sum[NUM_THREADS];
 	step = 1.0 / (double)num_steps;
 	omp_set_num_threads(NUM_THREADS); //
-#pragma omp parallel
+#pragma omp parallel private(i)
 	{
 		double x;
 		int id;
