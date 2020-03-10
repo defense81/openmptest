@@ -6,7 +6,7 @@ double step;
 #define NUM_THREADS 2 
 void main()
 {
-	int i[NUM_THREADS];
+	int i;
 	double x, pi, sum[NUM_THREADS];
 	step = 1.0 / (double)num_steps;
 	omp_set_num_threads(NUM_THREADS); //
@@ -15,8 +15,8 @@ void main()
 		double x;
 		int id;
 		id = omp_get_thread_num();
-		for (i[id] = id, sum[id] = 0.0; i[id] < num_steps; i[id] = i[id] + NUM_THREADS) {//
-			x = (i[id] + 0.5) * step;
+		for (i = id, sum[id] = 0.0; i < num_steps; i = i + NUM_THREADS) {//
+			x = (i + 0.5) * step;
 			//cout << "i " << i[id] << " id" << id << endl;
 			sum[id] += 4.0 / (1.0 + x * x);
 		}
